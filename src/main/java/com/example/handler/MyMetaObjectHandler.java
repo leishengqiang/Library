@@ -12,7 +12,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("startTime",LocalDateTime.now(),metaObject);
-        this.setFieldValByName("endTime",LocalDateTime.now(),metaObject);
+        this.setFieldValByName("endTime",LocalDateTime.now().plusMonths(1),metaObject);
     }
 
     @Override

@@ -39,5 +39,6 @@ public class Borrow implements Serializable {
 
     private Integer status = 0;
 
-
+    @Version
+    private int version;
 }
