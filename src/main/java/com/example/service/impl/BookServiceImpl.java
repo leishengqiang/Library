@@ -47,8 +47,6 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
         •isNotNull：不为空 (IS NOT NULL)*/
     @Override
     public PageVO pageList(Integer currentPage) {
-        //查询全部
-        //创建的分叶查询的QueryWrapper对象
         QueryWrapper<Book> bookQueryWrapper = new QueryWrapper<>();
         bookQueryWrapper.gt("number", 0);//.gt  大于
         //创建分页对象
@@ -57,17 +55,11 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements IB
         PageVO pageVO = new PageVO();
         pageVO.setCurrentPage(resultPage.getCurrent());
         pageVO.setTotalPage(resultPage.getPages());
-
-        //分类查询
-        //创建集合存储查结果
         List<BookVO> result = new ArrayList<>();
         for (Book book : resultPage.getRecords()) {
             BookVO bookVO = new BookVO();
-            //使用 BeanUtils.copyProperties 将 Book 对象的属性复制到 BookVO 对象
             BeanUtils.copyProperties(book, bookVO);
-            //创建的分类查询的QueryWrapper对象
             QueryWrapper<Sort> sortQueryWrapper = new QueryWrapper<>();
-            //根据分类的id查询
             sortQueryWrapper.eq("id", book.getSid());
             Sort sort = this.sortMapper.selectOne(sortQueryWrapper);
             bookVO.setSname(sort.getName());

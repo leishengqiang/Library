@@ -40,11 +40,8 @@ public class BookController {
 
     @GetMapping("/list/{current}")
     public String list(@PathVariable("current") Integer current, Model model){
-        //自定义pagelist方法，查询所有图书并封装进PageVo
         PageVO pageVO = this.bookService.pageList(current);
-        //展示所有图书
         model.addAttribute("page", pageVO);
-        //进行分类再展示
         model.addAttribute("sortList", this.sortService.list());
         return "/user/list";
     }

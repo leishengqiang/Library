@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-//@Transactional
 public interface LoginService {
     /**
      * 登录校验
