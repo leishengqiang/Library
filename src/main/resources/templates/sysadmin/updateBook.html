@@ -35,6 +35,9 @@
             <td width="10%" class="tableleft">书籍ID</td>
             <td><input type="text" name="id" readonly th:value="${book.id}"/></td>
         </tr>
+
+        <input type="text" name="version" th:value="${book.version}"/>
+
         <tr>
             <td width="10%" class="tableleft">书籍名称</td>
             <td><input type="text" name="name" th:value="${book.name}"/></td>
